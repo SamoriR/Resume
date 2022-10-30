@@ -2,10 +2,10 @@ import Image from 'next/future/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Popover, Transition } from '@headlessui/react'
-import clsx from 'clsx'
+import classnames from 'classnames'
 
 import { Container } from '@/components/Container'
-import avatarImage from '@/images/avatar.jpg'
+import avatarImage from 'libs/images/avatar.jpg'
 import { Fragment, useEffect, useRef } from 'react'
 
 function CloseIcon(props) {
@@ -142,7 +142,7 @@ function NavItem({ href, children }) {
     <li>
       <Link
         href={href}
-        className={clsx(
+        className={classnames(
           'relative block px-3 py-2 transition',
           isActive
             ? 'text-teal-500 dark:text-teal-400'
@@ -216,7 +216,7 @@ function clamp(number, a, b) {
 function AvatarContainer({ className, ...props }) {
   return (
     <div
-      className={clsx(
+      className={classnames(
         className,
         'h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10'
       )}
@@ -230,14 +230,14 @@ function Avatar({ large = false, className, ...props }) {
     <Link
       href="/"
       aria-label="Home"
-      className={clsx(className, 'pointer-events-auto')}
+      className={classnames(className, 'pointer-events-auto')}
       {...props}
     >
       <Image
         src={avatarImage}
         alt=""
         sizes={large ? '4rem' : '2.25rem'}
-        className={clsx(
+        className={classnames(
           'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
           large ? 'h-16 w-16' : 'h-9 w-9'
         )}

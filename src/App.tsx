@@ -1,15 +1,26 @@
 import React from 'react';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
-      <p className="text-3xl text-red-700 font-bold mb-5">
-        Welcome!
-      </p>
-      <p className="text-gray-500 text-lg">
-        React and Tailwind CSS in action
-      </p>
-    </div>
-  );
-}
+import HomeScreen from './screens/HomeScreen';
+// import ProjectsScreen from './screens/ProjectsScreen';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomeScreen />,
+    loader: async () => 'hello',
+    children: [
+      {
+        path: 'projects',
+        element: <>hi</>,
+        loader: async () => 'hello',
+      },
+    ],
+  },
+]);
+
+const App = () => <RouterProvider router={router} />;
 export default App;
