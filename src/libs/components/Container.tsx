@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-const OuterContainer = (props: any) => {
+export const OuterContainer = (props: any) => {
   const { className, children } = props;
 
   return (
@@ -11,7 +11,7 @@ const OuterContainer = (props: any) => {
   );
 };
 
-const InnerContainer = (props: any) => {
+export const InnerContainer = (props: any) => {
   const { className, children } = props;
 
   return (

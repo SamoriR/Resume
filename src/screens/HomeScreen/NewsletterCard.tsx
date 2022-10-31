@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Button from 'libs/components/Button';
+import Button from 'libs/components/button';
 import { EnvelopeIcon } from '@heroicons/react/20/solid';
 
 const NewsletterCard = () => {
