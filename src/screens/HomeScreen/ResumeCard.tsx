@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
+import Button from 'libs/components/button';
+
 import { BriefcaseIcon, ArrowDownIcon } from '@heroicons/react/20/solid';
-import logoAirbnb from 'libs/images/logos/airbnb.svg';
-import logoFacebook from 'libs/images/logos/facebook.svg';
-import logoPlanetaria from 'libs/images/logos/planetaria.svg';
-import logoStarbucks from 'libs/images/logos/starbucks.svg';
+import logoAirbnb from 'res/logos/airbnb.svg';
+import logoFacebook from 'res/logos/facebook.svg';
+import logoPlanetaria from 'res/logos/planetaria.svg';
+import logoStarbucks from 'res/logos/starbucks.svg';
 
 const resume = [
   {
@@ -11,10 +13,7 @@ const resume = [
     title: 'CEO',
     logo: logoPlanetaria,
     start: '2019',
-    end: {
-      label: 'Present',
-      dateTime: new Date().getFullYear(),
-    },
+    end: 'Present',
   },
   {
     company: 'Airbnb',
@@ -66,25 +65,25 @@ const ResumeCard = () => {
               <dt className="sr-only">Date</dt>
               <dd
                 className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
-                aria-label={`${role.start.label ?? role.start} until ${
-                  role.end.label ?? role.end
+                aria-label={`${role.start} until ${
+                  role.end
                 }`}
               >
-                <time dateTime={role.start.dateTime ?? role.start}>
-                  {role.start.label ?? role.start}
+                <time dateTime={role.start}>
+                  {role.start}
                 </time>
                 {' '}
                 <span aria-hidden="true">—</span>
                 {' '}
-                <time dateTime={role.end.dateTime ?? role.end}>
-                  {role.end.label ?? role.end}
+                <time dateTime={role.end}>
+                  {role.end}
                 </time>
               </dd>
             </dl>
           </li>
         ))}
       </ol>
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
+      <Button onClick={() => {}} variant="secondary" className="group mt-6 w-full">
         Download CV
         <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
       </Button>

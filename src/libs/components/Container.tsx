@@ -2,10 +2,10 @@ import React from 'react';
 import classnames from 'classnames';
 
 export const OuterContainer = (props: any) => {
-  const { className, children } = props;
+  const { className, style, children } = props;
 
   return (
-    <div className={classnames('sm:px-8', className)}>
+    <div className={classnames('sm:px-8', className)} style={style}>
       <div className="mx-auto max-w-7xl lg:px-8">{children}</div>
     </div>
   );
@@ -24,10 +24,15 @@ export const InnerContainer = (props: any) => {
 };
 
 const Container = (props: any) => {
-  const { children, innerClassName, outerClassName } = props;
+  const {
+    children,
+    innerClassName,
+    outerClassName,
+    style,
+  } = props;
 
   return (
-    <OuterContainer className={outerClassName}>
+    <OuterContainer className={outerClassName} style={style}>
       <InnerContainer className={innerClassName}>
         {children}
       </InnerContainer>

@@ -1,4 +1,6 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, {
+  useState, useEffect, useRef, useCallback,
+} from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Container from 'libs/components/Container';
@@ -10,29 +12,50 @@ import DarkModeSwitcher from './DarkModeSwitcher';
 import MobileNavBar from './MobileNavBar';
 import DesktopNavBar from './DesktopNavBar';
 
+type Position = 'static' | 'relative' | 'absolute' | 'sticky' | 'fixed';
+
+interface INavStyle {
+  initial: boolean
+  headerPosition: Position,
+  headerInnerPosition: Position,
+  headerHeight: string,
+  headerTop: string,
+  headerMB: string,
+  avatarTop: string,
+  avatarImageTransform: string,
+  avatarBorderTransform: string,
+  avatarBorderOpacity: string,
+  contentOffset: string,
+}
+
 const NavigationBar = () => {
   const location = useLocation();
+  const [navStyle, setNavStyle] = useState<INavStyle>({
+    initial: true,
+    headerPosition: 'relative' as Position,
+    headerInnerPosition: 'relative' as Position,
+    headerHeight: '',
+    headerTop: '',
+    headerMB: '',
+    avatarTop: '',
+    avatarImageTransform: '',
+    avatarBorderTransform: '',
+    avatarBorderOpacity: '',
+    contentOffset: '',
+  });
   const isHomePage = location.pathname === '/';
 
   const headerRef = useRef<HTMLDivElement>(null);
   const avatarRef = useRef<HTMLDivElement>(null);
-  const isInitial = useRef(true);
 
-  useEffect(() => {
+  const updateStyles = useCallback(async () => {
     const downDelay = avatarRef.current?.offsetTop ?? 0;
     const upDelay = 64;
 
-    function setProperty(property: string, value: string) {
-      document.documentElement.style.setProperty(property, value);
-    }
-
-    function removeProperty(property: string) {
-      document.documentElement.style.removeProperty(property);
-    }
-
-    function updateHeaderStyles() {
+    const updateHeaderStyles = (style: INavStyle) => {
+      const newNavStyle = style;
       if (headerRef === undefined || headerRef.current === undefined) {
-        return;
+        return style;
       }
 
       const { top, height } = headerRef.current!.getBoundingClientRect();
@@ -42,38 +65,46 @@ const NavigationBar = () => {
         document.body.scrollHeight - window.innerHeight,
       );
 
-      if (isInitial.current) {
-        setProperty('--header-position', 'sticky');
+      if (style.initial) {
+        newNavStyle.headerPosition = 'sticky' as Position;
       }
 
-      setProperty('--content-offset', `${downDelay}px`);
+      newNavStyle.contentOffset = `${downDelay}px`;
 
-      if (isInitial.current || scrollY < downDelay) {
-        setProperty('--header-height', `${downDelay + height}px`);
-        setProperty('--header-mb', `${-downDelay}px`);
+      if (style.initial || scrollY < downDelay) {
+        newNavStyle.headerHeight = `${downDelay + height}px`;
+        newNavStyle.headerMB = `${-downDelay}px`;
       } else if (top + height < -upDelay) {
         const offset = Math.max(height, scrollY - upDelay);
-        setProperty('--header-height', `${offset}px`);
-        setProperty('--header-mb', `${height - offset}px`);
+        newNavStyle.headerHeight = `${offset}px`;
+        newNavStyle.headerMB = `${height - offset}px`;
       } else if (top === 0) {
-        setProperty('--header-height', `${scrollY + height}px`);
-        setProperty('--header-mb', `${-scrollY}px`);
+        newNavStyle.headerHeight = `${scrollY + height}px`;
+        newNavStyle.headerMB = `${-scrollY}px`;
       }
 
+      // TODO: headerInnerPosition flickers which needs to be fixed
+      console.log(top);
+      console.log(scrollY);
+      console.log(downDelay);
       if (top === 0 && scrollY > 0 && scrollY >= downDelay) {
-        setProperty('--header-inner-position', 'fixed');
-        removeProperty('--header-top');
-        removeProperty('--avatar-top');
+        console.log('hello');
+        newNavStyle.headerInnerPosition = 'fixed' as Position;
+        newNavStyle.headerTop = '';
+        newNavStyle.avatarTop = '';
       } else {
-        removeProperty('--header-inner-position');
-        setProperty('--header-top', '0px');
-        setProperty('--avatar-top', '0px');
+        newNavStyle.headerInnerPosition = 'relative' as Position;
+        newNavStyle.headerTop = '0px';
+        newNavStyle.avatarTop = '0px';
       }
-    }
 
-    function updateAvatarStyles() {
+      return newNavStyle;
+    };
+
+    function updateAvatarStyles(style: INavStyle) {
+      const newNavStyle = style;
       if (!isHomePage) {
-        return;
+        return style;
       }
 
       const fromScale = 1;
@@ -89,25 +120,28 @@ const NavigationBar = () => {
       let x = (scrollY * (fromX - toX)) / downDelay + toX;
       x = clamp(x, fromX, toX);
 
-      setProperty(
-        '--avatar-image-transform',
-        `translate3d(${x}rem, 0, 0) scale(${scale})`,
-      );
+      newNavStyle.avatarImageTransform = `translate3d(${x}rem, 0, 0) scale(${scale})`;
 
       const borderScale = 1 / (toScale / scale);
       const borderX = (-toX + x) * borderScale;
       const borderTransform = `translate3d(${borderX}rem, 0, 0) scale(${borderScale})`;
 
-      setProperty('--avatar-border-transform', borderTransform);
-      setProperty('--avatar-border-opacity', scale === toScale ? '1' : '0');
+      newNavStyle.avatarBorderTransform = borderTransform;
+      newNavStyle.avatarBorderOpacity = scale === toScale ? '1' : '0';
+
+      return newNavStyle;
     }
 
-    function updateStyles() {
-      updateHeaderStyles();
-      updateAvatarStyles();
-      isInitial.current = false;
-    }
+    const navStyleClone = structuredClone(navStyle);
+    let newNavStyle = updateHeaderStyles(navStyleClone);
+    newNavStyle = updateAvatarStyles(newNavStyle);
+    newNavStyle.initial = false;
 
+    setNavStyle(newNavStyle);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isHomePage]);
+
+  useEffect(() => {
     updateStyles();
     window.addEventListener('scroll', updateStyles, { passive: true });
     window.addEventListener('resize', updateStyles);
@@ -116,15 +150,17 @@ const NavigationBar = () => {
       window.removeEventListener('scroll', updateStyles);
       window.removeEventListener('resize', updateStyles);
     };
-  }, [isHomePage]);
+  }, [isHomePage, updateStyles]);
+
+  console.log(navStyle);
 
   return (
     <>
       <header
         className="pointer-events-none relative z-50 flex flex-col"
         style={{
-          height: 'var(--header-height)',
-          marginBottom: 'var(--header-mb)',
+          height: navStyle.headerHeight,
+          marginBottom: navStyle.headerMB,
         }}
       >
         {isHomePage && (
@@ -134,25 +170,25 @@ const NavigationBar = () => {
               className="order-last mt-[calc(theme(spacing.16)-theme(spacing.3))]"
             />
             <Container
-              className="top-0 order-last -mb-3 pt-3"
-              style={{ position: 'var(--header-position)' }}
+              outerClassName="top-0 order-last -mb-3 pt-3"
+              style={{ position: navStyle.headerPosition }}
             >
               <div
-                className="top-[var(--avatar-top,theme(spacing.3))] w-full"
-                style={{ position: 'var(--header-inner-position)' }}
+                className={`top-[var(${navStyle.avatarTop},theme(spacing.3))] w-full`}
+                style={{ position: navStyle.headerInnerPosition }}
               >
                 <div className="relative">
                   <AvatarContainer
                     className="absolute left-0 top-3 origin-left transition-opacity"
                     style={{
-                      opacity: 'var(--avatar-border-opacity, 0)',
-                      transform: 'var(--avatar-border-transform)',
+                      opacity: navStyle.avatarBorderOpacity,
+                      transform: navStyle.avatarBorderTransform,
                     }}
                   />
                   <AvatarIcon
                     large
                     className="block h-16 w-16 origin-left"
-                    style={{ transform: 'var(--avatar-image-transform)' }}
+                    style={{ transform: navStyle.avatarImageTransform }}
                   />
                 </div>
               </div>
@@ -162,11 +198,11 @@ const NavigationBar = () => {
         <div
           ref={headerRef}
           className="top-0 z-10 h-16 pt-6"
-          style={{ position: 'var(--header-position)' }}
+          style={{ position: navStyle.headerPosition }}
         >
           <Container
-            className="top-[var(--header-top,theme(spacing.6))] w-full"
-            style={{ position: 'var(--header-inner-position)' }}
+            outerClassName={`top-[var(${navStyle.headerTop},theme(spacing.6))] w-full`}
+            style={{ position: navStyle.headerInnerPosition }}
           >
             <div className="relative flex gap-4">
               <div className="flex flex-1">
@@ -187,7 +223,7 @@ const NavigationBar = () => {
           </Container>
         </div>
       </header>
-      {isHomePage && <div style={{ height: 'var(--content-offset)' }} />}
+      {isHomePage && <div style={{ height: navStyle.contentOffset }} />}
     </>
   );
 };

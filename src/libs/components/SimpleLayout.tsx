@@ -1,6 +1,8 @@
-import { Container } from '@/components/Container'
+import React from 'react';
+import Container from 'libs/components/Container';
 
-export function SimpleLayout({ title, intro, children }) {
+const SimpleLayout = (props: any) => {
+  const { title, intro, children } = props;
   return (
     <Container className="mt-16 sm:mt-32">
       <header className="max-w-2xl">
@@ -13,5 +15,7 @@ export function SimpleLayout({ title, intro, children }) {
       </header>
       <div className="mt-16 sm:mt-20">{children}</div>
     </Container>
-  )
-}
+  );
+};
+
+export default SimpleLayout;

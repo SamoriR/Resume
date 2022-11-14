@@ -4,6 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 import Container from 'libs/components/Container';
 import SocialIcons from 'libs/components/social/icons';
 import SocialLink from 'libs/components/social/SocialLink';
+import NavigationWrapper from 'libs/components/Navigation';
 import classnames from 'classnames';
 
 import image1 from 'res/photos/image-1.jpg';
@@ -14,7 +15,7 @@ import image5 from 'res/photos/image-5.jpg';
 
 import ArticleCard from './ArticleCard';
 import NewsletterCard from './NewsletterCard';
-// import ResumeCard from './ResumeCard';
+import ResumeCard from './ResumeCard';
 
 const {
   TwitterIcon,
@@ -60,12 +61,36 @@ export default function Home() {
   console.log(data);
 
   return (
-    <>
-      <Container className="mt-9">
+    <NavigationWrapper>
+      <Container outerClassName="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Software designer, founder, and amateur astronaut.
           </h1>
+          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+            I’m Spencer, a software designer and entrepreneur based in New York
+            City. I’m the founder and CEO of Planetaria, where we develop
+            technologies that empower regular people to explore space on their
+            own terms.
+          </p>
+          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+            I’m Spencer, a software designer and entrepreneur based in New York
+            City. I’m the founder and CEO of Planetaria, where we develop
+            technologies that empower regular people to explore space on their
+            own terms.
+          </p>
+          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+            I’m Spencer, a software designer and entrepreneur based in New York
+            City. I’m the founder and CEO of Planetaria, where we develop
+            technologies that empower regular people to explore space on their
+            own terms.
+          </p>
+          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+            I’m Spencer, a software designer and entrepreneur based in New York
+            City. I’m the founder and CEO of Planetaria, where we develop
+            technologies that empower regular people to explore space on their
+            own terms.
+          </p>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             I’m Spencer, a software designer and entrepreneur based in New York
             City. I’m the founder and CEO of Planetaria, where we develop
@@ -109,10 +134,10 @@ export default function Home() {
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
             <NewsletterCard />
-            {/* <ResumeCard /> */}
+            <ResumeCard />
           </div>
         </div>
       </Container>
-    </>
+    </NavigationWrapper>
   );
 }
