@@ -4,6 +4,8 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
+import getArticles from 'libs/api/getArticles';
+
 import HomeScreen from './screens/HomeScreen';
 import ProjectsScreen from './screens/ProjectsScreen';
 
@@ -11,7 +13,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <HomeScreen />,
-    loader: async () => 'hello',
+    loader: async () => getArticles(),
   },
   {
     path: '/projects',

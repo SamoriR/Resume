@@ -12,7 +12,7 @@ const ArticleCard = (props: any) => {
 
   return (
     <Card as="article">
-      <CardTitle href={`/articles/${article.slug}`}>
+      <CardTitle href={`/articles/${article.url}`}>
         {article.title}
       </CardTitle>
       <CardDate as="time" dateTime={article.date} decorate>
