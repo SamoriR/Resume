@@ -6,6 +6,12 @@ import DarkModeSwitcher from './DarkModeSwitcher';
 import MobileNavBar from './MobileNavBar';
 import DesktopNavBar from './DesktopNavBar';
 
+const NAVIGATION_ROUTES = [
+  'about',
+  'articles',
+  'projects',
+];
+
 const NavigationBar = () => (
   <header
     className="pointer-events-none relative z-50 flex flex-col"
@@ -21,8 +27,8 @@ const NavigationBar = () => (
             <Avatar />
           </div>
           <div className="flex flex-1 justify-end md:justify-center">
-            <MobileNavBar className="pointer-events-auto md:hidden" />
-            <DesktopNavBar className="pointer-events-auto hidden md:block" />
+            <MobileNavBar className="pointer-events-auto md:hidden" routes={NAVIGATION_ROUTES} />
+            <DesktopNavBar className="pointer-events-auto hidden md:block" routes={NAVIGATION_ROUTES} />
           </div>
           <div className="flex justify-end md:flex-1">
             <div className="pointer-events-auto">

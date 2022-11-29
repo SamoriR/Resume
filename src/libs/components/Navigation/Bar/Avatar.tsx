@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import classnames from 'classnames';
-import avatarImage from 'res/avatar.jpg';
+import avatarImage from 'res/avatar-2.jpg';
 
 export const AvatarContainer = (props: any) => {
   const { className, style, children } = props;

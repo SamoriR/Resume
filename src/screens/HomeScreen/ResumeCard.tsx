@@ -2,39 +2,23 @@ import React, { useEffect } from 'react';
 import Button from 'libs/components/button';
 
 import { BriefcaseIcon, ArrowDownIcon } from '@heroicons/react/20/solid';
-import logoAirbnb from 'res/logos/airbnb.svg';
-import logoFacebook from 'res/logos/facebook.svg';
-import logoPlanetaria from 'res/logos/planetaria.svg';
-import logoStarbucks from 'res/logos/starbucks.svg';
+import logoMicrosoft from 'res/logos/microsoft.svg';
+import logoCodexDF from 'res/logos/cdf.png';
 
 const resume = [
   {
-    company: 'Planetaria',
-    title: 'CEO',
-    logo: logoPlanetaria,
-    start: '2019',
-    end: 'Present',
+    company: 'CodexDF',
+    title: 'Lead Software Engineer',
+    logo: logoCodexDF,
+    start: '2022',
+    end: '2022',
   },
   {
-    company: 'Airbnb',
-    title: 'Product Designer',
-    logo: logoAirbnb,
-    start: '2014',
-    end: '2019',
-  },
-  {
-    company: 'Facebook',
-    title: 'iOS Software Engineer',
-    logo: logoFacebook,
-    start: '2011',
-    end: '2014',
-  },
-  {
-    company: 'Starbucks',
-    title: 'Shift Supervisor',
-    logo: logoStarbucks,
-    start: '2008',
-    end: '2011',
+    company: 'Microsoft',
+    title: 'Software Engineer 2',
+    logo: logoMicrosoft,
+    start: '2018',
+    end: '2022',
   },
 ];
 
@@ -51,7 +35,7 @@ const ResumeCard = () => {
         {resume.map((role) => (
           <li key={role.title} className="flex gap-4">
             <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <img src={role.logo} alt="" className="h-7 w-7" />
+              <img src={role.logo} alt="" className="h-6 w-6" />
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2">
               <dt className="sr-only">Company</dt>

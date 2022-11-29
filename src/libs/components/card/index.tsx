@@ -6,6 +6,7 @@ import CardDescription from './CardDescription';
 import CardLink from './CardLink';
 import CardMoreLink from './CardMoreLink';
 import CardTitle from './CardTitle';
+import CardEyebrow from './CardEyebrow';
 
 export {
   CardDate,
@@ -13,6 +14,7 @@ export {
   CardLink,
   CardMoreLink,
   CardTitle,
+  CardEyebrow,
 };
 
 const Card = (props: any) => {

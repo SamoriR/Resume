@@ -5,14 +5,14 @@ import classnames from 'classnames';
 import Container from 'libs/components/Container';
 import SocialIcons from 'libs/components/social/icons';
 import SocialLink from 'libs/components/social/SocialLink';
-import NavigationWrapper from 'libs/components/Navigation';
+import NavigationWrapper from 'libs/components/navigation';
 import { IArticle } from 'libs/api/getArticles';
 
-import image1 from 'res/photos/image-1.jpg';
-import image2 from 'res/photos/image-2.jpg';
-import image3 from 'res/photos/image-3.jpg';
-import image4 from 'res/photos/image-4.jpg';
-import image5 from 'res/photos/image-5.jpg';
+import image1 from 'res/photos/home/img-1.jpg';
+import image2 from 'res/photos/home/img-2.jpg';
+import image3 from 'res/photos/home/img-3.jpg';
+import image4 from 'res/photos/home/img-4.jpg';
+import image5 from 'res/photos/home/img-5.jpg';
 
 import ArticleCard from './ArticleCard';
 import NewsletterCard from './NewsletterCard';
@@ -59,8 +59,6 @@ export default function Home() {
     document.title = 'Samori Roberts';
   });
 
-  console.log(articles);
-
   return (
     <NavigationWrapper>
       <Container outerClassName="mt-9">
@@ -70,27 +68,27 @@ export default function Home() {
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             My name is Samori Roberts, graduate of Morehouse College, class of 2018,
-            and Seattle based Software Engineer. I’m a Microsoft Alumni that loves
+            and Seattle based Software Engineer. I&apos;m a Microsoft Alumni that loves
             working with early-stage start-ups as a contractor, advisor, and leader.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="https://twitter.com"
+              to="https://twitter.com"
               aria-label="Follow on Twitter"
               icon={TwitterIcon}
             />
             <SocialLink
-              href="https://instagram.com"
+              to="https://instagram.com"
               aria-label="Follow on Instagram"
               icon={InstagramIcon}
             />
             <SocialLink
-              href="https://github.com"
+              to="https://github.com/SamoriR"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             />
             <SocialLink
-              href="https://linkedin.com"
+              to="https://linkedin.com"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
             />

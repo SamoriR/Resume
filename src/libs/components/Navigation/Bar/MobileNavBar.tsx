@@ -18,7 +18,7 @@ const MobileNavItem = (props: any) => {
 };
 
 const MobileNavBar = (props: any) => {
-  const { className } = props;
+  const { className, routes } = props;
   return (
     <Popover className={className}>
       <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
@@ -60,11 +60,9 @@ const MobileNavBar = (props: any) => {
             </div>
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
-                <MobileNavItem href="/about">About</MobileNavItem>
-                <MobileNavItem href="/articles">Articles</MobileNavItem>
-                <MobileNavItem href="/projects">Projects</MobileNavItem>
-                <MobileNavItem href="/speaking">Speaking</MobileNavItem>
-                <MobileNavItem href="/uses">Uses</MobileNavItem>
+                {
+                  routes.map((route: string) => <MobileNavItem to={`/${route}`}>{route}</MobileNavItem>)
+                }
               </ul>
             </nav>
           </Popover.Panel>

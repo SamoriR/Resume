@@ -1,50 +1,39 @@
 import React, { useEffect } from 'react';
 
-import NavigationWrapper from 'libs/components/Navigation';
+import NavigationWrapper from 'libs/components/navigation';
 import Card, { CardLink, CardDescription } from 'libs/components/card';
 import SimpleLayout from 'libs/components/SimpleLayout';
-import logoCodexDF from 'res/logos/cdf.jpeg';
+import logoCodexDF from 'res/logos/cdf.png';
+import logoHumble from 'res/logos/humble.png';
+import logoFeedback from 'res/logos/feedback.png';
+
 import { LinkIcon } from '@heroicons/react/20/solid';
 
 const projects = [
   {
-    name: 'Planetaria',
+    name: 'CodexDF',
     description:
-      'Creating technology to empower civilians to explore space on their own terms.',
-    link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
+      'Web3 tax and compliance software.',
+    link: { href: 'https://www.crunchbase.com/organization/codexdf', label: 'crunchbase.com' },
     logo: logoCodexDF,
   },
   {
-    name: 'Animaginary',
+    name: 'Humble',
     description:
-      'High performance web animation library, hand-written in optimized WASM.',
+      'NFT marketplace built on the Flow blockchain',
     link: { href: '#', label: 'github.com' },
-    logo: logoCodexDF,
+    logo: logoHumble,
   },
   {
-    name: 'HelioStream',
+    name: 'Feedback',
     description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
+      'Social media statistics and networking platform.',
     link: { href: '#', label: 'github.com' },
-    logo: logoCodexDF,
-  },
-  {
-    name: 'cosmOS',
-    description:
-      'The operating system that powers our Planetaria space shuttles.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoCodexDF,
-  },
-  {
-    name: 'OpenShuttle',
-    description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoCodexDF,
+    logo: logoFeedback,
   },
 ];
 
-const Projects = () => {
+const ProjectsScreen = () => {
   useEffect(() => {
     document.title = 'Projects - Samori Roberts';
   });
@@ -83,4 +72,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default ProjectsScreen;
