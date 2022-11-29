@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationBar from './Bar/Static';
+import NavigationBar from './bar/Static';
 import NavigationFooter from './Footer';
 
 const NavigationWrapper = (props: any) => {

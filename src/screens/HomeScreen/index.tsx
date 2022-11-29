@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import Container from 'libs/components/Container';
 import SocialIcons from 'libs/components/social/icons';
 import SocialLink from 'libs/components/social/SocialLink';
-import NavigationWrapper from 'libs/components/navigation';
+import NavigationWrapper from 'libs/components/navigation/';
 import { IArticle } from 'libs/api/getArticles';
 
 import image1 from 'res/photos/home/img-1.jpg';
