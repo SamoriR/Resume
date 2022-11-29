@@ -4,6 +4,7 @@ import Button from 'libs/components/button';
 import { BriefcaseIcon, ArrowDownIcon } from '@heroicons/react/20/solid';
 import logoMicrosoft from 'res/logos/microsoft.svg';
 import logoCodexDF from 'res/logos/cdf.png';
+import resumePdf from 'res/samori_roberts_resume.pdf';
 
 const resume = [
   {
@@ -24,6 +25,10 @@ const resume = [
 
 const ResumeCard = () => {
   useEffect(() => {}, []);
+
+  const openResume = () => {
+    window.open(resumePdf);
+  };
 
   return (
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
@@ -67,8 +72,8 @@ const ResumeCard = () => {
           </li>
         ))}
       </ol>
-      <Button onClick={() => {}} variant="secondary" className="group mt-6 w-full">
-        Download CV
+      <Button onClick={openResume} variant="secondary" className="group mt-6 w-full">
+        Open Resume
         <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
       </Button>
     </div>
