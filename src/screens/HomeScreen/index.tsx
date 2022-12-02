@@ -56,7 +56,7 @@ export default function Home() {
               icon={GitHubIcon}
             />
             <SocialLink
-              to="https://linkedin.com"
+              to="https://linkedin.com/in/samorir/"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
             />

@@ -69,16 +69,16 @@ const AboutScreen = () => {
           </div>
           <div className="lg:pl-20">
             <ul className="flex flex-col space-y-4">
-              <SocialLink to="#" icon={TwitterIcon}>
+              <SocialLink to="https://twitter.com" icon={TwitterIcon}>
                 Follow on Twitter
               </SocialLink>
-              <SocialLink to="#" icon={InstagramIcon} className="mt-4">
+              <SocialLink to="https://instagram.com" icon={InstagramIcon} className="mt-4">
                 Follow on Instagram
               </SocialLink>
               <SocialLink to="https://github.com/SamoriR" icon={GitHubIcon} className="mt-4">
                 Follow on GitHub
               </SocialLink>
-              <SocialLink to="#" icon={LinkedInIcon} className="mt-4">
+              <SocialLink to="https://linkedin.com/in/samorir/" icon={LinkedInIcon} className="mt-4">
                 Follow on LinkedIn
               </SocialLink>
               <SocialLink
