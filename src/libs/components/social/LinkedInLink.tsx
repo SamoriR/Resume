@@ -1,4 +1,6 @@
 import React from 'react';
+import SocialLink from './SocialLink';
+import urls from './urls';
 
 const LinkedInIcon = (props: any) => {
   const { className } = props;
@@ -10,4 +12,17 @@ const LinkedInIcon = (props: any) => {
   );
 };
 
-export default LinkedInIcon;
+const LinkedInLink = ({ showLabel }: { showLabel?: boolean }) => {
+  const label = 'Follow on LinkedIn';
+  return (
+    <SocialLink
+      to={urls.linkedIn}
+      icon={<LinkedInIcon />}
+      aria-label={label}
+    >
+      { showLabel ? label : '' }
+    </SocialLink>
+  );
+};
+
+export default LinkedInLink;

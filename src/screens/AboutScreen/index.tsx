@@ -1,20 +1,10 @@
 import React, { useEffect } from 'react';
 
-import SocialIcons from 'libs/components/social/icons';
-import SocialLink from 'libs/components/social/SocialLink';
+import Social from 'libs/components/social';
 import Container from 'libs/components/Container';
 import NavigationWrapper from 'libs/components/navigation';
 
 import aboutImage from 'res/photos/about/img-1.jpg';
-
-import { EnvelopeIcon } from '@heroicons/react/20/solid';
-
-const {
-  TwitterIcon,
-  InstagramIcon,
-  GitHubIcon,
-  LinkedInIcon,
-} = SocialIcons;
 
 const AboutScreen = () => {
   useEffect(() => {
@@ -69,25 +59,11 @@ const AboutScreen = () => {
           </div>
           <div className="lg:pl-20">
             <ul className="flex flex-col space-y-4">
-              <SocialLink to="https://twitter.com" icon={TwitterIcon}>
-                Follow on Twitter
-              </SocialLink>
-              <SocialLink to="https://instagram.com" icon={InstagramIcon} className="mt-4">
-                Follow on Instagram
-              </SocialLink>
-              <SocialLink to="https://github.com/SamoriR" icon={GitHubIcon} className="mt-4">
-                Follow on GitHub
-              </SocialLink>
-              <SocialLink to="https://linkedin.com/in/samorir/" icon={LinkedInIcon} className="mt-4">
-                Follow on LinkedIn
-              </SocialLink>
-              <SocialLink
-                to="mailto:samori.roberts@gmail.com"
-                icon={EnvelopeIcon}
-                className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
-              >
-                samori.roberts@gmail.com
-              </SocialLink>
+
+              <Social.InstagramLink showLabel />
+              <Social.GitHubLink showLabel />
+              <Social.LinkedInLink showLabel />
+              <Social.EmailLink showLabel />
             </ul>
           </div>
         </div>

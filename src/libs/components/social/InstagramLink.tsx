@@ -1,4 +1,6 @@
 import React from 'react';
+import SocialLink from './SocialLink';
+import urls from './urls';
 
 const InstagramIcon = (props: any) => {
   const { className } = props;
@@ -11,4 +13,17 @@ const InstagramIcon = (props: any) => {
   );
 };
 
-export default InstagramIcon;
+const InstagramLink = ({ showLabel }: { showLabel?: boolean }) => {
+  const label = 'Follow on Instagram';
+  return (
+    <SocialLink
+      to={urls.instagram}
+      icon={<InstagramIcon />}
+      aria-label={label}
+    >
+      { showLabel ? label : '' }
+    </SocialLink>
+  );
+};
+
+export default InstagramLink;

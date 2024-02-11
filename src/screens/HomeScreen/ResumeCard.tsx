@@ -4,9 +4,17 @@ import Button from 'libs/components/button';
 import { BriefcaseIcon, ArrowDownIcon } from '@heroicons/react/20/solid';
 import logoMicrosoft from 'res/logos/microsoft.svg';
 import logoCodexDF from 'res/logos/cdf.png';
+import logoDescript from 'res/logos/descript.png';
 import resumePdf from 'res/samori_roberts_resume.pdf';
 
 const resume = [
+  {
+    company: 'Descript',
+    title: 'Software Engineer',
+    logo: logoDescript,
+    start: '2023',
+    end: '2024',
+  },
   {
     company: 'CodexDF',
     title: 'Lead Software Engineer',
@@ -40,7 +48,7 @@ const ResumeCard = () => {
         {resume.map((role) => (
           <li key={role.title} className="flex gap-4">
             <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <img src={role.logo} alt="" className="h-6 w-6" />
+              <img src={role.logo} alt="" className="h-6" />
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2">
               <dt className="sr-only">Company</dt>

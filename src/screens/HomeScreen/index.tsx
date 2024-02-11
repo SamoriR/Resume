@@ -2,22 +2,14 @@ import React, { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 import Container from 'libs/components/Container';
-import SocialIcons from 'libs/components/social/icons';
-import SocialLink from 'libs/components/social/SocialLink';
+import Social from 'libs/components/social';
 import NavigationWrapper from 'libs/components/navigation';
 import { IArticle } from 'libs/api/getArticles';
 
 import PhotoReel from './PhotoReel';
 import ArticleCard from './ArticleCard';
-import NewsletterCard from './NewsletterCard';
+// import NewsletterCard from './NewsletterCard';
 import ResumeCard from './ResumeCard';
-
-const {
-  TwitterIcon,
-  InstagramIcon,
-  GitHubIcon,
-  LinkedInIcon,
-} = SocialIcons;
 
 export default function Home() {
   const articles = useLoaderData() as IArticle[];
@@ -40,26 +32,9 @@ export default function Home() {
             (And yes I did take those pictures of Travis Scott and J-Cole below!)
           </p>
           <div className="mt-6 flex gap-6">
-            <SocialLink
-              to="https://twitter.com"
-              aria-label="Follow on Twitter"
-              icon={TwitterIcon}
-            />
-            <SocialLink
-              to="https://instagram.com"
-              aria-label="Follow on Instagram"
-              icon={InstagramIcon}
-            />
-            <SocialLink
-              to="https://github.com/SamoriR"
-              aria-label="Follow on GitHub"
-              icon={GitHubIcon}
-            />
-            <SocialLink
-              to="https://linkedin.com/in/samorir/"
-              aria-label="Follow on LinkedIn"
-              icon={LinkedInIcon}
-            />
+            <Social.InstagramLink />
+            <Social.GitHubLink />
+            <Social.LinkedInLink />
           </div>
         </div>
       </Container>
@@ -77,7 +52,7 @@ export default function Home() {
             }
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <NewsletterCard />
+            {/* <NewsletterCard /> */}
             <ResumeCard />
           </div>
         </div>

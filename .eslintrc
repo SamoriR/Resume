@@ -12,6 +12,7 @@
         "no-console": "off",
         "react/function-component-definition": "off",
         "@typescript-eslint/space-before-blocks": "off",
-        "import/no-extraneous-dependencies": "off"
+        "import/no-extraneous-dependencies": "off",
+        "react/require-default-props": "off"
     }
 }

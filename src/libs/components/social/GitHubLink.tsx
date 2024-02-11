@@ -1,4 +1,6 @@
 import React from 'react';
+import SocialLink from './SocialLink';
+import urls from './urls';
 
 const GitHubIcon = (props: any) => {
   const { className } = props;
@@ -14,4 +16,17 @@ const GitHubIcon = (props: any) => {
   );
 };
 
-export default GitHubIcon;
+const GithubLink = ({ showLabel }: { showLabel?: boolean }) => {
+  const label = 'Follow on Github';
+  return (
+    <SocialLink
+      to={urls.github}
+      icon={<GitHubIcon />}
+      aria-label={label}
+    >
+      { showLabel ? label : undefined }
+    </SocialLink>
+  );
+};
+
+export default GithubLink;
