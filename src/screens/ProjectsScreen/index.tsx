@@ -11,6 +11,13 @@ import { LinkIcon } from '@heroicons/react/20/solid';
 
 const projects = [
   {
+    name: 'This Website!',
+    description:
+      'Web3 tax and compliance software.',
+    link: { href: 'https://www.crunchbase.com/organization/codexdf', label: 'crunchbase.com' },
+    logo: logoCodexDF,
+  },
+  {
     name: 'CodexDF',
     description:
       'Web3 tax and compliance software.',
@@ -32,6 +39,8 @@ const projects = [
     logo: logoFeedback,
   },
 ];
+
+// TODO: Update this with all of the projects I've worked on
 
 const ProjectsScreen = () => {
   useEffect(() => {

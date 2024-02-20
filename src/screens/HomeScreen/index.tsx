@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useEffect, useMemo } from 'react';
 
+import { getTwoLatestArticles } from 'libs/articles';
+import { Article } from 'libs/articles/types';
 import Container from 'libs/components/Container';
 import Social from 'libs/components/social';
 import NavigationWrapper from 'libs/components/navigation';
-import { IArticle } from 'libs/api/getArticles';
 
 import PhotoReel from './PhotoReel';
 import ArticleCard from './ArticleCard';
@@ -12,18 +12,18 @@ import ArticleCard from './ArticleCard';
 import ResumeCard from './ResumeCard';
 
 export default function Home() {
-  const articles = useLoaderData() as IArticle[];
-
   useEffect(() => {
     document.title = 'Samori Roberts';
   });
+
+  const twoLatestArticles = useMemo(() => getTwoLatestArticles(), []);
 
   return (
     <NavigationWrapper>
       <Container outerClassName="mt-9">
         <div className="max-w-2xl">
           <h1 className="mt-20 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Software Engineer, Technical Advisor, and Hobbyist.
+            Software Engineer, Founder, and Amateur Quant.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             My name is Samori Roberts, graduate of Morehouse College, class of 2018,
@@ -45,9 +45,8 @@ export default function Home() {
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
             {
-              articles
-              && articles.map((article: any) => (
-                <ArticleCard key={article.slug} article={article} />
+              twoLatestArticles.map((article: Article) => (
+                <ArticleCard key={article.id} article={article} />
               ))
             }
           </div>

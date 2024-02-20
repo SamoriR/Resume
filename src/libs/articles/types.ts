@@ -4,8 +4,10 @@ export type ArticleNode = {
 };
 
 export type Article = {
+  id: string;
+  date: string;
   leading: string;
   heading: string;
-  subheading: string;
+  description: string;
   content: ArticleNode[];
 };
