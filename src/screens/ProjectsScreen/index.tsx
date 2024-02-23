@@ -1,13 +1,18 @@
+/* eslint-disable max-len */
 import React, { useEffect } from 'react';
 
 import NavigationWrapper from 'libs/components/navigation';
 import Card, { CardLink, CardDescription } from 'libs/components/card';
 import SimpleLayout from 'libs/components/SimpleLayout';
+
+import logoMe from 'res/avatar.jpg';
+import logoDescript from 'res/logos/descript.png';
 import logoCodexDF from 'res/logos/cdf.png';
 import logoHumble from 'res/logos/humble.png';
 import logoFeedback from 'res/logos/feedback.png';
+import logoOneNote from 'res/logos/microsoft-onenote.png';
 
-import { LinkIcon } from '@heroicons/react/20/solid';
+// import { LinkIcon } from '@heroicons/react/20/solid';
 
 const projects = [
   {
@@ -15,7 +20,14 @@ const projects = [
     description:
       'A living example of what I can do.',
     link: { href: 'https://www.crunchbase.com/organization/codexdf', label: 'crunchbase.com' },
-    logo: logoCodexDF,
+    logo: logoMe,
+  },
+  {
+    name: 'Descript',
+    description:
+      'AI video editing software.',
+    link: { href: 'https://www.crunchbase.com/organization/codexdf', label: 'github.com' },
+    logo: logoDescript,
   },
   {
     name: 'CodexDF',
@@ -37,6 +49,13 @@ const projects = [
       'Social media statistics and networking platform.',
     link: { href: '#', label: 'github.com' },
     logo: logoFeedback,
+  },
+  {
+    name: 'OneNote',
+    description:
+      'Digital note taking app.',
+    link: { href: '#', label: 'github.com' },
+    logo: logoOneNote,
   },
 ];
 
@@ -62,17 +81,21 @@ const ProjectsScreen = () => {
                 <img
                   src={project.logo}
                   alt=""
-                  className="h-8 w-8"
+                  className="w-7"
                 />
               </div>
               <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
                 <CardLink href={project.link.href}>{project.name}</CardLink>
               </h2>
               <CardDescription>{project.description}</CardDescription>
+              {
+                /*
               <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
                 <LinkIcon className="h-6 w-6 flex-none" />
                 <span className="ml-2">{project.link.label}</span>
               </p>
+              */
+              }
             </Card>
           ))}
         </ul>
