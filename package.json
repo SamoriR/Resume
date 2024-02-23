@@ -18,7 +18,8 @@
     "react-scripts": "5.0.1",
     "res": "file:src/res",
     "typescript": "^4.8.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "classnames": "^2.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -53,7 +54,6 @@
   "devDependencies": {
     "@types/jest": "^29.2.3",
     "autoprefixer": "^10.4.13",
-    "classnames": "^2.3.2",
     "eslint": "^8.26.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
