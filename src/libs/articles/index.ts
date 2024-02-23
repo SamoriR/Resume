@@ -1,10 +1,12 @@
-import burningFatAndBuildingMuscle from './documents/dietAndNutrition';
+import dietAndNutritionPage from './documents/dietAndNutrition';
 import monteCarloSimulationPage from './documents/monteCarloSimulation';
+import onenotePage from './documents/onenote';
 import { Article } from './types';
 
 export const allArticles: Article[] = [
+  dietAndNutritionPage,
   monteCarloSimulationPage,
-  burningFatAndBuildingMuscle,
+  onenotePage,
 ];
 
 export const getArticleFromId = (id: string) => allArticles.find((article) => article.id === id);

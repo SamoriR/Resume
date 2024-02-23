@@ -16,7 +16,7 @@ export default function Home() {
     document.title = 'Samori Roberts';
   });
 
-  const twoLatestArticles = useMemo(() => getLatestArticles(3), []);
+  const twoLatestArticles = useMemo(() => getLatestArticles(2), []);
 
   return (
     <NavigationWrapper>
