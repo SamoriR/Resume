@@ -30,7 +30,7 @@
     "eject": "react-scripts eject",
     "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "npm run lint -- --fix ./src/",
-    "prepare": "if test \"$NODE_ENV\" = \"production\" ; then husky install ; fi "
+    "prepare": "if test \"$NODE_ENV\" = \"development\" ; then husky install ; fi "
   },
   "eslintConfig": {
     "extends": [
