@@ -16,7 +16,7 @@ const ArticleCard = ({
   <article className="md:grid md:grid-cols-4 md:items-baseline">
     <Card className="md:col-span-3">
       <CardTitle href={`/article/${article.id}`}>
-        {article.heading}
+        {article.title}
       </CardTitle>
       <CardEyebrow
         as="time"

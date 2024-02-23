@@ -9,10 +9,6 @@ import Container from 'libs/components/Container';
 const ArticleViewerScreen = () => {
   const { articleId } = useParams<{ articleId?: string }>();
 
-  useEffect(() => {
-    document.title = 'Articles - Samori Roberts';
-  });
-
   const article = useMemo(() => {
     if (!articleId) {
       return undefined;
@@ -22,6 +18,13 @@ const ArticleViewerScreen = () => {
     return currentArticle;
   }, [articleId]);
 
+  useEffect(() => {
+    if (article) {
+      document.title = article.title;
+      window.scrollTo(0, 0);
+    }
+  }, [article]);
+
   if (!article) {
     return null;
   }
@@ -29,10 +32,9 @@ const ArticleViewerScreen = () => {
   return (
     <NavigationWrapper>
       <Container outerClassName="mt-16 sm:mt-32">
-
         <ArticlePage
-          leading={article.leading}
-          heading={article.heading}
+          date={article.date}
+          heading={article.title}
           content={article.content}
         />
       </Container>

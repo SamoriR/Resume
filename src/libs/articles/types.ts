@@ -7,7 +7,7 @@ export type Article = {
   id: string;
   date: string;
   leading: string;
-  heading: string;
+  title: string;
   description: string;
   content: ArticleNode[];
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 
-import { getTwoLatestArticles } from 'libs/articles';
+import { getLatestArticles } from 'libs/articles';
 import { Article } from 'libs/articles/types';
 import Container from 'libs/components/Container';
 import Social from 'libs/components/social';
@@ -16,7 +16,7 @@ export default function Home() {
     document.title = 'Samori Roberts';
   });
 
-  const twoLatestArticles = useMemo(() => getTwoLatestArticles(), []);
+  const twoLatestArticles = useMemo(() => getLatestArticles(3), []);
 
   return (
     <NavigationWrapper>

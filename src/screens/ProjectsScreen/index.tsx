@@ -13,7 +13,7 @@ const projects = [
   {
     name: 'This Website!',
     description:
-      'Web3 tax and compliance software.',
+      'A living example of what I can do.',
     link: { href: 'https://www.crunchbase.com/organization/codexdf', label: 'crunchbase.com' },
     logo: logoCodexDF,
   },
@@ -50,8 +50,8 @@ const ProjectsScreen = () => {
   return (
     <NavigationWrapper>
       <SimpleLayout
-        title="Things I’ve made trying to put my dent in the universe."
-        intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved."
+        title="Products I've made sginificant contributions to."
+        intro="I have worked on tons of projects, big and small, over the years and the following are ones that helped me become the professional I am today. Unfortunately, most are not open-source, but if something piques your interest feel free to read the post mortem for the product and reach out if there is anything you would like to learn more about."
       >
         <ul
           className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"

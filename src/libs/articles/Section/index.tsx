@@ -1,6 +1,10 @@
 import React, { useMemo } from 'react';
 import { ArticleNode } from '../types';
 
+import HeadingSection from './HeadingSection';
+import TextSection from './TextSection';
+import ImageSection from './ImageSection';
+
 const ArticleSection = ({ node }: { node: ArticleNode }) => {
   const { type, data } = node;
 
@@ -8,17 +12,18 @@ const ArticleSection = ({ node }: { node: ArticleNode }) => {
     switch (type) {
       case 'heading':
         return (
-          <div className="pt-8 font-bold text-2xl">
-            {data}
-          </div>
+          <HeadingSection text={data} />
         );
       case 'text':
-      default:
         return (
-          <div className="pt-4">
-            {data}
-          </div>
+          <TextSection text={data} />
         );
+      case 'image':
+        return (
+          <ImageSection src={data} />
+        );
+      default:
+        return null;
     }
   }, [type, data]);
 
