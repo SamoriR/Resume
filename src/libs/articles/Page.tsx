@@ -1,8 +1,8 @@
 import React from 'react';
-import ArticleDocumentNode from './ArticleDocumentNode';
+import ArticleSection from './Section';
 import { ArticleNode } from './types';
 
-const ArticleDocument = ({
+const ArticlePage = ({
   leading,
   heading,
   content,
@@ -16,10 +16,10 @@ const ArticleDocument = ({
     <h1 className="pt-2 text-3xl font-bold tracking-tight text-gray-100 sm:text-4xl">{heading}</h1>
     <div className="py-6 lg:px-18 text-gray-200 text-justify">
       {content.map((documentNode) => (
-        <ArticleDocumentNode node={documentNode} />
+        <ArticleSection node={documentNode} />
       ))}
     </div>
   </div>
 );
 
-export default ArticleDocument;
+export default ArticlePage;

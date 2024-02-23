@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import { ArticleNode } from './types';
+import { ArticleNode } from '../types';
 
-const ArticleDocumentNode = ({ node }: { node: ArticleNode }) => {
+const ArticleSection = ({ node }: { node: ArticleNode }) => {
   const { type, data } = node;
 
   const Node = useMemo(() => {
@@ -25,4 +25,4 @@ const ArticleDocumentNode = ({ node }: { node: ArticleNode }) => {
   return Node;
 };
 
-export default ArticleDocumentNode;
+export default ArticleSection;

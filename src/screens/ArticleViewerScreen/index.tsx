@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
 import NavigationWrapper from 'libs/components/navigation';
-import ArticleDocument from 'libs/articles/ArticleDocument';
+import ArticlePage from 'libs/articles/Page';
 import { getArticleFromId } from 'libs/articles';
 import Container from 'libs/components/Container';
 
@@ -30,7 +30,7 @@ const ArticleViewerScreen = () => {
     <NavigationWrapper>
       <Container outerClassName="mt-16 sm:mt-32">
 
-        <ArticleDocument
+        <ArticlePage
           leading={article.leading}
           heading={article.heading}
           content={article.content}
